@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Result</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/Mallika2002/OCTANET_JUNE/main/logo_1-removebg.png" type="image/x-icon">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* Add the styles for cards */
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto; /* Center the cards */
+        max-width: 1200px; /* Set maximum width for better responsiveness */
+      }
+      .card {
+        width: calc(30% - 20px); /* Adjusted box size with margin */
+        background: #fff;
+        height: 300px; /* Adjust height as needed */
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        margin-right: 20px; /* Added margin between cards */
+        margin-left: 20px; /* Added margin between cards */
+        border-radius: 5px;
+        overflow: hidden;
+        transition: 0.3s;
+        display: inline-block; /* Display cards inline */
+      }
+
+      .card:hover {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .card .contain {
+        height: 70%; /* Adjust height as needed */
+
+        justify-content: center; /* Center align the content horizontally */
+        align-items: center; /* Center align the content vertically */
+      }
+
+      .card .contain img {
+        width: 100%;
+        height: 90%; /* Adjust image height */
+        object-fit: cover;
+        transition: transform 0.3s;
+      }
+
+      .card:hover .contain img {
+        transform: scale(1.1);
+      }
+
+      .empty-message1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        text-align: center;
+      }
+
+      .empty-message1 p {
+        font-size: 54px;
+        font-weight: bold;
+      }
+      
+      .card .contain h2 {
+        text-align: center; /* Center align the text */
+        color: #045df6;
+        margin: 0;
+        padding: 10px; /* Adjust as needed */
+      }
+    </style>
+    <div class="empty-message1"><img src="https://raw.githubusercontent.com/Mallika2002/OCTANET_JUNE/main/logo_1-removebg%20(1)-Photoroom.jpg"  width="60px" height="50px" margin-right="80px" alt="TripThriveLogo">
+      <p>
+        <span style="color:rgb(71, 68, 255);">T</span><span style="color:black">rip</span><span style="color:rgb(71, 68, 255);">T</span><span style="color:black">hrive</span>
+    </p>
+    
+    </div>
+  </head>
+  <body>
+    <h1 style="text-align: center;">Recommendations based on your previous trips</h1>
+    <div class="cards">
+      {% for city, image_urls in city_images.items() %}
+      <div class="card">
+        <div class="contain">
+          <img src="{{ image_urls[0] }}" alt="{{ city }}" />
+          <h2>{{ city }}</h2>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>

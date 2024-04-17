@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Trips</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/Mallika2002/OCTANET_JUNE/main/logo_1-removebg.png" type="image/x-icon">
+    <!-- Font Awesome CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* Add this CSS to style the stars */
+      .stars {
+        text-align: center;
+        margin-top: 10px; /* Adjust this value as needed */
+      }
+
+      .stars i.fa-star {
+        color: #045df6;
+        margin-right: 3px;
+      }
+
+      /* Add this CSS for the "Update" button */
+      .update-button {
+        background-color: #045df6;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 20px; /* Adjust as needed */
+        transition: background-color 0.3s;
+      }
+
+      .update-button:hover {
+        background-color: #0345b5;
+      }
+      /* General Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Lato", sans-serif;
+      }
+
+      /* Navbar Styles */
+      #navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: #efeded;
+        height: 70px;
+        width: 100%;
+        transition: background 0.3s;
+      }
+
+      #navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+      }
+
+      #logo {
+        font-size: 36px;
+        font-weight: 500;
+        color: black;
+        text-shadow: 0px 1px 1px black;
+        margin-bottom: 5px;
+        text-decoration: none;
+      }
+
+      #logo span{
+        color:rgb(71, 68, 255);
+    }
+
+      .navbar-toggler span {
+        color: rgb(71, 68, 255);
+      }
+
+      .navbar-nav {
+        margin-left: 40px;
+      }
+
+      .nav-item .nav-link {
+        font-size: 16px;
+        font-weight: 550;
+        color: black;
+        letter-spacing: 1px;
+        border-radius: 12px;
+        transition: 0.5s ease;
+      }
+
+      .nav-item .nav-link:hover {
+        background: rgb(71, 68, 255);
+        color: #fff;
+      }
+
+      #navbar form button {
+        background: rgb(71, 68, 255);
+        border-radius: 12px;
+        color: #fff;
+        border: none;
+      }
+
+      .nav-item .nav-link.active {
+        background: rgb(71, 68, 255);
+        color: #fff;
+      }
+
+      /* Home Section */
+      .home {
+        height: 80vh;
+        width: 100%;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.2)
+          ),
+          url(images/img1.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .home .content {
+        text-align: center;
+        padding-top: 100px;
+      }
+
+      .home .content h5 {
+        color: #fff;
+        font-size: 58px;
+        font-weight: 550;
+        text-shadow: 0px 1px 1px black;
+      }
+
+      .home .content h1 {
+        color: #fff;
+        font-size: 70px;
+        font-weight: 550;
+        text-shadow: 0px 1px 1px black;
+        margin-top: 5px;
+      }
+
+      .home .content p {
+        color: #fff;
+        font-size: 15px;
+        font-weight: 600;
+        text-shadow: 0px 1px 1px black;
+        margin-bottom: 30px;
+        margin-top: 5px;
+      }
+
+      .home .content a {
+        padding: 10px;
+        background: #fff;
+        color: black;
+        letter-spacing: 2px;
+        border-radius: 5px;
+        transition: 0.5s;
+        text-decoration: solid;
+      }
+
+      .home .content a:hover {
+        background: rgb(71, 68, 255);
+        color: white;
+      }
+
+      /* Trips Section */
+      .trips {
+        padding: 50px 0;
+        background: #f9f9f9;
+      }
+
+      .trips .main-txt {
+        text-align: center;
+        padding-bottom: 50px;
+      }
+
+      .trips .main-txt h1 {
+        color: #022ef4;
+        font-size: 40px;
+      }
+
+      .trips .cards {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto; /* Center the cards */
+        max-width: 1200px; /* Set maximum width for better responsiveness */
+      }
+
+      .trips .card {
+        width: calc(31% - 20px); /* Adjusted box size with margin */
+        background: #fff;
+        height:450px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        margin-right: 15px; /* Added margin between cards */
+        margin-left: 15px; /* Added margin between cards */
+        border-radius: 5px;
+        overflow: hidden;
+        transition: 0.3s;
+      }
+
+      .trips .card:hover {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .trips .card .contain {
+        height: 50%;
+        overflow: hidden;
+        justify-content: center; /* Center align the content horizontally */
+        align-items: center; /* Center align the content vertically */
+      }
+
+      .trips .card .contain img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.3s;
+      }
+
+      .trips .card .contain h2 {
+        text-align: center; /* Center align the text */
+        color: #045df6;
+        margin: 0;
+        padding: 10px; /* Adjust as needed */
+      }
+
+      .trips .card:hover .contain img {
+        transform: scale(1.1);
+      }
+
+      .trips .card .details {
+        padding: 20px;
+        height: 50%; /* Adjust as needed */
+        overflow-y: auto; /* Add scrollbar when content exceeds height */
+      }
+
+      .trips .card .details h3 {
+        color: #5a68a7;
+        font-size: 24px;
+        margin-bottom: 15px;
+      }
+
+      .trips .card .details .o {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 20px;
+      }
+
+      .trips .card .details .h {
+        margin-bottom: 20px;
+      }
+
+      .trips .card .details a {
+        display: block;
+        background: #5a68a7;
+        color: #fff;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        margin-top: 20px;
+        transition: 0.3s;
+      }
+
+      .trips .card .details a:hover {
+        background: #445177;
+      }
+
+      .add-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #045df6;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      .empty-message {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        text-align: center;
+      }
+
+      .empty-message1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        text-align: center;
+      }
+
+      .empty-message p {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .empty-message1 p {
+        font-size: 54px;
+        font-weight: bold;
+      }
+
+      .add-button:hover {
+        background-color: #0345b5;
+      }
+
+      /* Responsive Styles */
+      @media screen and (max-width: 1200px) {
+        .trips .card {
+          width: calc(48% - 20px); /* Adjusted box size with margin */
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .trips .card {
+          width: calc(100% - 20px); /* Adjusted box size with margin */
+        }
+      }
+    </style>
+    <div class="empty-message1"><img src="https://raw.githubusercontent.com/Mallika2002/OCTANET_JUNE/main/logo_1-removebg%20(1)-Photoroom.jpg"  width="60px" height="50px" margin-right="80px" alt="TripThriveLogo">
+      <p>
+        <span style="color:rgb(71, 68, 255);">T</span><span style="color:black">rip</span><span style="color:rgb(71, 68, 255);">T</span><span style="color:black">hrive</span>
+    </p>
+    
+    </div>
+  </head>
+  <body>
+    <section class="trips" id="trips">
+      <div class="container">
+        <div class="main-txt">
+          <h1>My Trips</h1>
+        </div>
+        <div class="cards" id="trip-cards">
+          <!-- Trip cards will be dynamically added here -->
+        </div>
+      </div>
+    </section>
+
+    <script>
+      window.onload = function () {
+        fetch("/trips")
+          .then((response) => response.json())
+          .then((data) => renderTrips(data))
+          .catch((error) => console.error("Error fetching trips:", error));
+      };
+
+      function renderTrips(trips) {
+        const tripCardsContainer = document.getElementById("trip-cards");
+        tripCardsContainer.innerHTML = ""; // Clear existing cards
+
+        if (trips.length === 0) {
+          tripCardsContainer.innerHTML = `<div class="empty-message">
+            <p>You need to add trips to be shown here.</p>
+          </div>`;
+        } else {
+          trips.forEach((trip) => {
+            const card = document.createElement("div");
+            card.classList.add("card");
+
+            card.innerHTML = `
+                <div class="contain">
+                    <h2>${trip.name}</h2>
+                    <img src="${trip.picture}" alt="${trip.name}" >
+                </div>
+                <div class="details">
+                    <p><b>Review:</b> ${trip.review}</p>
+                    <div class="stars">
+                        ${generateStarRating(trip.rating)}
+                    </div>
+                    <center><button class="update-button" onclick="redirectToUpdateReview('${
+                      trip.name
+                    }')">Update</button></center>
+                </div>
+            `;
+
+            tripCardsContainer.appendChild(card);
+          });
+        }
+      }
+
+      function generateStarRating(rating) {
+        let starsHtml = "";
+        const maxStars = 5;
+
+        // Fill in full star icons based on rating
+        for (let i = 1; i <= maxStars; i++) {
+          if (i <= rating) {
+            starsHtml += '<i class="fas fa-star"></i>'; // Full star icon
+          } else {
+            starsHtml += '<i class="far fa-star"></i>'; // Empty star icon
+          }
+        }
+
+        return starsHtml;
+      }
+
+      function redirectToUpdateReview(tripName) {
+        // Redirect to update review page with the trip name
+        window.location.href = "/update_review/" + tripName;
+      }
+    </script>
+  </body>
+</html>

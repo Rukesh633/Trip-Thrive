@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Trips</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/Mallika2002/OCTANET_JUNE/main/logo_1-removebg.png" type="image/x-icon">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      .stars i.fa-star {
+        color: #ffc107;
+        margin-right: 3px;
+        cursor: pointer;
+      }
+
+      .stars i.fa-star:hover,
+      .stars i.fa-star.active {
+        color: #040cfb;
+      }
+      .review-form {
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        max-width: 600px;
+      }
+
+      .review-form h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .review-form form {
+        text-align: left;
+      }
+
+      .review-form label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .review-form input[type="text"],
+      .review-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        resize: vertical;
+      }
+
+      .review-form .rating-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .review-form .rating-container label {
+        margin-right: 10px;
+      }
+
+      .review-form .stars {
+        display: flex;
+      }
+
+      .review-form .stars i {
+        color: #8aa5f6;
+        margin-right: 3px;
+        cursor: pointer;
+      }
+
+      .review-form .stars i:hover,
+      .review-form .stars i.active {
+        color: #040cfb;
+      }
+
+      .review-form .button-container {
+        text-align: center;
+      }
+
+      .review-form input[type="submit"] {
+        background-color: #045df6;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      .review-form input[type="submit"]:hover {
+        background-color: #0345b5;
+      }
+
+      .review-form input[type="file"] {
+        margin-top: 15px;
+      }
+      /* General Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Lato", sans-serif;
+      }
+
+      /* Navbar Styles */
+      #navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: #efeded;
+        height: 70px;
+        width: 100%;
+        transition: background 0.3s;
+      }
+
+      #navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+      }
+
+      #logo {
+        font-size: 36px;
+        font-weight: 500;
+        color: black;
+        text-shadow: 0px 1px 1px black;
+        margin-bottom: 5px;
+        text-decoration: none;
+      }
+
+      #logo span {
+        color: rgb(71, 68, 255);
+      }
+
+      .navbar-toggler span {
+        color: rgb(71, 68, 255);
+      }
+
+      .navbar-nav {
+        margin-left: 40px;
+      }
+
+      .nav-item .nav-link {
+        font-size: 16px;
+        font-weight: 550;
+        color: black;
+        letter-spacing: 1px;
+        border-radius: 12px;
+        transition: 0.5s ease;
+      }
+
+      .nav-item .nav-link:hover {
+        background: rgb(71, 68, 255);
+        color: #fff;
+      }
+
+      #navbar form button {
+        background: rgb(71, 68, 255);
+        border-radius: 12px;
+        color: #fff;
+        border: none;
+      }
+
+      .nav-item .nav-link.active {
+        background: rgb(71, 68, 255);
+        color: #fff;
+      }
+
+      /* Home Section */
+      .home {
+        height: 80vh;
+        width: 100%;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0.2)
+          ),
+          url(images/img1.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .home .content {
+        text-align: center;
+        padding-top: 100px;
+      }
+
+      .home .content h5 {
+        color: #fff;
+        font-size: 58px;
+        font-weight: 550;
+        text-shadow: 0px 1px 1px black;
+      }
+
+      .home .content h1 {
+        color: #fff;
+        font-size: 70px;
+        font-weight: 550;
+        text-shadow: 0px 1px 1px black;
+        margin-top: 5px;
+      }
+
+      .home .content p {
+        color: #fff;
+        font-size: 15px;
+        font-weight: 600;
+        text-shadow: 0px 1px 1px black;
+        margin-bottom: 30px;
+        margin-top: 5px;
+      }
+
+      .home .content a {
+        padding: 10px;
+        background: #fff;
+        color: black;
+        letter-spacing: 2px;
+        border-radius: 5px;
+        transition: 0.5s;
+        text-decoration: solid;
+      }
+
+      .home .content a:hover {
+        background: rgb(71, 68, 255);
+        color: white;
+      }
+
+      /* Trips Section */
+      .trips {
+        padding: 50px 0;
+        background: #f9f9f9;
+      }
+
+      .trips .main-txt {
+        text-align: center;
+        padding-bottom: 50px;
+      }
+
+      .trips .main-txt h1 {
+        color: #022ef4;
+        font-size: 40px;
+      }
+
+      .trips .cards {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin: 0 auto; /* Center the cards */
+        max-width: 1200px; /* Set maximum width for better responsiveness */
+      }
+
+      .trips .card {
+        width: calc(31% - 20px); /* Adjusted box size with margin */
+        background: #fff;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        border-radius: 5px;
+        overflow: hidden;
+        transition: 0.3s;
+      }
+
+      .trips .card:hover {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .trips .card .contain {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .trips .card .contain img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.3s;
+      }
+
+      .trips .card:hover .contain img {
+        transform: scale(1.1);
+      }
+
+      .trips .card .details {
+        padding: 20px;
+      }
+
+      .trips .card .details h3 {
+        color: #5a68a7;
+        font-size: 24px;
+        margin-bottom: 15px;
+      }
+
+      .trips .card .details .o {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 20px;
+      }
+
+      .trips .card .details .h {
+        margin-bottom: 20px;
+      }
+
+      .trips .card .details a {
+        display: block;
+        background: #5a68a7;
+        color: #fff;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        margin-top: 20px;
+        transition: 0.3s;
+      }
+
+      .trips .card .details a:hover {
+        background: #445177;
+      }
+
+      .add-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #045df6;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      .add-button:hover {
+        background-color: #0345b5;
+      }
+
+      /* Responsive Styles */
+      @media screen and (max-width: 1200px) {
+        .trips .card {
+          width: calc(48% - 20px); /* Adjusted box size with margin */
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .trips .card {
+          width: calc(100% - 20px); /* Adjusted box size with margin */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="review-form">
+      <h2>Add Your Review</h2>
+      <form action="/submit_review" method="post" id="reviewForm" enctype="multipart/form-data">
+        <div>
+          <label for="placeName">Place Name:</label><br />
+          <input
+            type="text"
+            id="placeName"
+            name="placeName"
+            style="cursor: not-allowed"
+            value="{{trip_name}}"
+            readonly
+          />
+        </div>
+        <div>
+          <label for="picture">Upload Picture (Optional):</label><br />
+          <input type="file" id="picture" name="picture" accept="image/*" />
+        </div>
+        <div>
+          <label for="review">Review:</label><br />
+          <textarea id="review" name="review" rows="4">
+{{trip_review}}</textarea
+          >
+        </div>
+        <div>
+          <label for="rating">Rating:</label><br />
+          <div class="stars" id="ratingStars">
+            <!-- Star icons will be dynamically added here -->
+          </div>
+          <input
+            type="hidden"
+            id="rating"
+            name="rating"
+            min="1"
+            max="5"
+            value="{{trip_rating}}"
+          />
+        </div>
+        <div class="button-container">
+          <input type="submit" value="Submit" />
+        </div>
+      </form>
+    </div>
+
+    <!-- Your other HTML content -->
+
+    <script>
+      window.onload = function () {
+        renderStarRating(); // Render star ratings on page load
+      };
+
+      function renderStarRating() {
+        const ratingInput = document.getElementById("rating");
+        const ratingStarsContainer = document.getElementById("ratingStars");
+        const ratingValue = parseInt(ratingInput.value);
+
+        // Clear existing stars
+        ratingStarsContainer.innerHTML = "";
+
+        // Render star icons based on the rating value
+        for (let i = 1; i <= 5; i++) {
+          const starIcon = document.createElement("i");
+          starIcon.classList.add("fas", "fa-star");
+
+          // If the current star is less than or equal to the rating value, mark it as active
+          if (i <= ratingValue) {
+            starIcon.classList.add("active");
+          }
+
+          // Add click event listener to handle rating selection
+          starIcon.addEventListener("click", function () {
+            ratingInput.value = i; // Set the rating input value to the current star's value
+            renderStarRating(); // Re-render stars based on the selected rating
+          });
+
+          ratingStarsContainer.appendChild(starIcon);
+        }
+      }
+    </script>
+  </body>
+</html>

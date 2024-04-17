@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Recommendations</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/Mallika2002/OCTANET_JUNE/main/logo_1-removebg.png" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: rgb(71, 68, 255); 
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+        }
+        form {
+            display: flex;
+            justify-content: center;
+        }
+        input[type="submit"] {
+            background-color: rgb(71, 68, 255);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Hover color */
+        }
+        .image {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .empty-message1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90px;
+            text-align: center;
+          }
+    
+          .empty-message1 p {
+            font-size: 54px;
+            font-weight: bold;
+            margin-left:10px;
+          }
+          .empty-message1 img {
+            width: 60px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <img class="image" src="https://media.istockphoto.com/id/583809524/photo/alberta-wilderness-near-banff.jpg?s=612x612&w=0&k=20&c=hiI3ib9ibDxAgqEZEH09EO3JOw94v5xh6hzcuXGhO-M=" alt="Nature Landscape">
+        <h1>Find Recommendations</h1>
+        <p>Discover amazing destinations for your next trip!</p>
+        <form action="/find_cities" method="post">
+            <input type="submit" value="Let's go">
+        </form>
+    </div>
+</body>
+</html>

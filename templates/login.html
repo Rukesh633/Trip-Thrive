@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/Mallika2002/OCTANET_JUNE/main/logo_1-removebg.png" type="image/x-icon">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style1.css') }}"
+    />
+    <script
+      src="{{ url_for('static', filename='script_login.js') }}"
+      defer
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <h2 style="font-size:30px;">Login</h2>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="username" style="font-size:20px;">Username:</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            class="form-control"
+            required
+          />
+          <span id="usernameError" class="error"></span>
+        </div>
+        <div class="form-group">
+          <label for="password" style="font-size:20px;">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            required
+          />
+          <span id="passwordError" class="error"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="font-size:20px;">Login</button>
+      </form>
+      <div class="no-account-section">
+        <p style="font-size:20px;">
+          No account? <a style="font-size:20px;" href="{{ url_for('signup') }}">Create one here</a>.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
